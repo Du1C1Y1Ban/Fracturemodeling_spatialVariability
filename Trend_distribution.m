@@ -1,10 +1,10 @@
-%% 
+%% Probability trend
 cub_size = 2;
 num = [3000;1500];
 x = 11:cub_size:69;
 y = 11:cub_size:49;
-Px = 3 * x - 80;
-Py = -0.025*(y-40).^2+10;
+Px = 3 * x - 10;
+Py = -0.025*(y-30).^2+10;
 Px(Px < 0) = 0;
 Nx = num .* Px/sum(Px);
 zouxjz = [20 70];
@@ -44,8 +44,7 @@ for I = 1:2
         end
     end
 end
-dlmwrite('Trend_distribution_fracdata.txt',frac_data,'-append','delimiter','\t');
-%% 
+%% Quantity distribution
 cub_size = 2;
 x = 11:cub_size:69;
 y = 11:cub_size:49;
@@ -91,4 +90,3 @@ for I = 1:2
         end
     end
 end
-dlmwrite('Trend_distribution_fracdata.txt',frac_data,'-append','delimiter','\t');
