@@ -5,7 +5,7 @@ Directionmean = [40 115];
 DirectionSD = [5 5];
 tracelengthmean = [2 2];
 tracelengthSD = [1 1];
-data = xlsread('C:\Users\Administrator\Desktop\sample_zone.xlsx');
+data = load('Sampledata.txt');
 S = data(:,1:2);
 theta = [10 10]; lob = [0.1 0.1]; upb = [20 20];
 XY = gridsamp([Length(1)+cube/2 Wide(1)+cube/2;Length(2)-cube/2 Wide(2)-cube/2],[30,20]);
@@ -18,7 +18,7 @@ for k = 1:2
     [Z1,MSE] = predictor(XY,dmodel);
     Z1(Z1<0) = 0;
     for i = 1:length(Z1)
-        num = round(Z1(k));       
+        num = round(Z1(i));       
         X0 = unifrnd(X1(i)-cube/2,X1(i)+cube/2,num,1);
         Y0 = unifrnd(Y1(i)-cube/2,Y1(i)+cube/2,num,1);
         Direction = normrnd(Directionmean(k),DirectionSD(k),num,1);   
@@ -41,4 +41,3 @@ for k = 1:2
         end
     end
 end
-dlmwrite('Spatial_continuous_fracdata.txt',frac_data,'-append','delimiter','\t');
